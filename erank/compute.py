@@ -59,10 +59,10 @@ def main():
 
     print_random_words(word_dict)
 
-    X = np.zeros((pages_count, word_count), dtype=np.int16)
+    X = np.zeros((pages_count, word_count), dtype=np.float32)
     for index, page_words in enumerate(pages_words):
         for word in page_words:
-            X[index][word_dict[word]] += 1
+            X[index][word_dict[word]] += (1 / len(page_words))
     print('Effective rank =', compute_erank(X))
 
 
